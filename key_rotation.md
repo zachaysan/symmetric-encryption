@@ -21,7 +21,7 @@ To avoid this race-condition add the new key as the second key in the configurat
 file. That way it will continue decrypting using the current key, but can also
 decrypt with the new key during the rolling deploy.
 
-### 2. Active the new key
+### 2. Activate the new key
 
 Once the new key has been deployed as a secondary key, the next deploy can move
 the new key to the top of the list so that it can also start encrypting with the
@@ -34,8 +34,8 @@ decrypt old data using the old key.
 For PCI Compliance it is necessary to re-encrypt old data with the new key and
 then to destroy the old key so that it cannot be used again.
 
-[RocketJob](https://github.com/reidmorrison/rocket_job) is a great solution for
-handling large batch jobs that need to process millions of records
+[RocketJob](http://rocketjob.io) is an excellent solution for
+running large batch jobs that need to process millions of records.
 
 ### 4. Re-encrypting Files
 
@@ -53,3 +53,5 @@ the old key in the configuration file and then re-encrypt that data too.
 Once sufficient time has passed and you are 100% certain that there is no data
 around that is still encrypted with the old key, wipe the key from all the production
 servers.
+
+### Next => [PCI Compliance](pci_compliance.html)

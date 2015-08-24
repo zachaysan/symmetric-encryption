@@ -54,3 +54,5 @@ since the header embedded in the file will indicate whether it was compressed
 The file header also contains a random key and iv used to encrypt the files contents.
 The key and iv is encrypted with the global encryption key being used by the symmetric
 encryption installation.
+
+### Next => [Key Rotation](key_rotation.html)

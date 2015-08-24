@@ -4,7 +4,21 @@ layout: default
 
 ## Rails Configuration
 
-If deploying to Heroku skip to the section "Rails Configuration for a Heroku deployment" below
+If deploying to Heroku, see: [Heroku Configuration](heroku.html)
+
+For a standalone environment without Rails, see: [Standalone Configuration](standalone.html)
+
+### Add to Gemfile
+
+Add the following line to your Gemfile _after_ the rails gems:
+
+```ruby
+gem 'symmetric-encryption'
+```
+
+Install using bundler:
+
+    bundle
 
 ### Creating the configuration file
 
@@ -32,13 +46,15 @@ key files for production. It is recommended that the step below be run on only
 one of the production servers. The generated key files must then be copied to
 all the production web servers.
 
-Note: Do not run this step more than once, otherwise new keys will be generated
-and any encrypted data will no longer be accessible.
+#### Notes
 
-Note: Do not run this step on more than one server in each environment otherwise
-each server will be encrypting with it's own key and the servers will not be able
-to decrypt data encrypted on another server. Just copy the generated files to each
-server
+* Do not run this step more than once, otherwise new keys will be generated
+  and any encrypted data will no longer be accessible.
+
+* Do not run this step on more than one server in each environment otherwise
+  each server will be encrypting with it's own key and the servers will not be able
+  to decrypt data encrypted on another server. Just copy the generated files to each
+  server
 
 The symmetric encryption key consists of the key itself and an optional
 initialization vector.
@@ -47,7 +63,7 @@ To generate the keys run the following Rake task once only in each environment:
 
     rails generate symmetric_encryption:new_keys production
 
-Replace 'production' as necessary for each environment.
+Replace `production` above as necessary for each environment.
 
 Make sure that the current user has read and write access to the folder listed
 in the config file option key_filename.
@@ -62,7 +78,7 @@ Change ownership of the keys to the rails user and only give it access to read t
     chown rails /etc/rails/keys/*
     chmod 0400 /etc/rails/keys/*
 
-Change 'rails' above to the userid under which your Rails processes are run
+Change `rails` above to the userid under which your Rails processes are run
 and update the path to the one supplied when generating the config file or
 look in the config file itself
 
@@ -71,63 +87,6 @@ key files to every server in that environment. I.e. All Rails servers in each
 environment must run the same encryption keys.
 
 Note: The generate step above must only be run once in each environment
-
-## Rails Configuration for a Heroku deployment
-
-Deploying to Heroku requires the encrypted key to be stored in an environment
-variable rather than as a file on disk.
-
-Generate the configuration file:
-
-    rails g symmetric_encryption:heroku_config
-
-Note: Ignore the warning about "Symmetric Encryption config not found" since it is
-being generated.
-
-Note: The encrypted keys for the release and production environments are displayed on
-screen and must be entered manually as environment variables into Heroku so that the
-application can find them when it starts.
-
-#### Save to version control
-
-This configuration file should be checked into the source code control system.
-It does Not include the Symmetric Encryption keys.
-
-## Using in non-Rails environments
-
-SymmetricEncryption can also be used in non-Rails environment.
-
-Install SymmetricEncryption
-
-    gem install symmetric-encryption
-
-Manually create a symmetric-encryption.yml configuration file based on the
-one supplied in examples/symmetric-encryption.yml.
-
-At application startup, run the code below to initialize symmetric-encryption prior to
-attempting to encrypt or decrypt any data
-
-```ruby
-require 'symmetric-encryption'
-SymmetricEncryption.load!('config/symmetric-encryption.yml', 'production')
-```
-
-Parameters:
-
-* Filename of the configuration file created above
-* Name of the environment to load the configuration for
-
-To manually generate the symmetric encryption keys, run the code below
-
-```ruby
-require 'symmetric-encryption'
-SymmetricEncryption.generate_symmetric_key_files('config/symmetric-encryption.yml', 'production')
-```
-
-Parameters:
-
-* Filename of the configuration file created above
-* Name of the environment to load the configuration for
 
 ## Supporting Multiple Encryption Keys
 
@@ -230,3 +189,5 @@ production:
         iv_filename:  /etc/rails/.rails_old.iv
         cipher_name:  aes-256-cbc
 ```
+
+### Next => [Heroku Configuration](heroku.html)
