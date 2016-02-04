@@ -35,7 +35,7 @@ documentation:
 with Symmetric Encryption in the source code itself
     * Confirm that the models for accessing the PII are secured using for example:
 
-```ruby
+~~~ruby
 # Rails ActiveRecord example of securing `bank_account_number`
 #
 # A column called `encrypted_bank_account_number` should exist in the database
@@ -44,9 +44,9 @@ with Symmetric Encryption in the source code itself
 class User < ActiveRecord::Base
   attr_encrypted :bank_account_number
   attr_encrypted :long_string, random_iv: true, compress: true
-```
+~~~
 
-```ruby
+~~~ruby
 # MongoMapper example of securing `bank_account_number`
 #
 # A column called `encrypted_bank_account_number` should exist in MongoDB
@@ -56,9 +56,9 @@ class User
   include MongoMapper::Document
   encrypted_key :bank_account_number,    String
   encrypted_key :long_string,            encrypted: {random_iv: true, compress: true}
-```
+~~~
 
-```ruby
+~~~ruby
 # Mongoid example of securing `bank_account_number`
 #
 # A column called `encrypted_bank_account_number` should exist in MongoDB
@@ -69,7 +69,7 @@ class User
 
   field :encrypted_bank_account_number, type: String,  encrypted: true
   field :encrypted_long_string,         type: String,  encrypted: {random_iv: true, compress: true}
-```
+~~~
 
 * Is the configured encryption algorithm and block cipher sufficiently strong for
 the production environment?
@@ -186,13 +186,13 @@ source code that should only be accessible to the application development team.
     * For example, in the Rails console to see the same data encrypted with the new and
       the old key:
 
-```ruby
+~~~ruby
 # Encrypted with new key
 SymmetricEncryption.encrypt('hello')
 
 # Encrypted with old key
 SymmetricEncryption.secondary_ciphers.first.encrypt('hello')
-```
+~~~
 
 3.6.6
 

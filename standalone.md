@@ -17,7 +17,7 @@ keys yet:
 
 Open an `irb` console and run the following code:
 
-```ruby
+~~~ruby
 require 'symmetric-encryption'
 # Test cipher
 SymmetricEncryption.cipher = SymmetricEncryption::Cipher.new(
@@ -34,7 +34,7 @@ encrypted = SymmetricEncryption.encrypt 'Hello World'
 SymmetricEncryption.decrypt(encrypted)
 
 # => "Hello World"
-```
+~~~
 
 ### Create configuration file
 
@@ -47,14 +47,14 @@ TODO: Add a command to generate a new stand-alone config file
 
 The configuration file above can be used immediately for development and testing purposes as follows:
 
-```ruby
+~~~ruby
 require 'symmetric-encryption'
 SymmetricEncryption.load!('symmetric-encryption.yml', 'development')
 
 encrypted = SymmetricEncryption.encrypt 'Hello World'
 
 SymmetricEncryption.decrypt(encrypted)
-```
+~~~
 
 Parameters:
 
@@ -79,10 +79,10 @@ in the config file option `key_filename` and `iv_filename`.
 
 To generate the symmetric encryption keys, run the code below in an irb console:
 
-```ruby
+~~~ruby
 require 'symmetric-encryption'
 SymmetricEncryption.generate_symmetric_key_files('symmetric-encryption.yml', 'production')
-```
+~~~
 
 Parameters:
 

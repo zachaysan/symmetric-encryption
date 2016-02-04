@@ -14,7 +14,7 @@ The following frameworks are directly supported by Symmetric Encryption
 
 Example on how to define encrypted attributes in ActiveRecord models:
 
-```ruby
+~~~ruby
 class User < ActiveRecord::Base
   # Requires table users to have a column called encrypted_bank_account_number
   attr_encrypted :bank_account_number
@@ -67,7 +67,7 @@ user.save!
 
 # Short example using create
 User.create(bank_account_number: '12345')
-```
+~~~
 
 Several types are supported for ActiveRecord models when encrypting or decrypting data.
 Each type maps to the built-in Ruby types as follows:
@@ -87,7 +87,7 @@ Each type maps to the built-in Ruby types as follows:
 To encrypt a field in a MongoMapper document, use `encrypted_key` instead of `key`
 when specifying a key.
 
-```ruby
+~~~ruby
 # User model MongoMapper
 class User
   include MongoMapper::Document
@@ -125,14 +125,14 @@ user = User.where(encrypted_bank_account_number: SymmetricEncryption.encrypt('12
 
 # Fields can be accessed using their unencrypted names
 puts user.bank_account_number
-```
+~~~
 
 ### Mongoid
 
 To encrypt a field in a Mongoid document, just add "encrypted: true" at the end
 of the field specifier. The field name must currently begin with "encrypted_"
 
-```ruby
+~~~ruby
 # User model in Mongoid
 class User
   include Mongoid::Document
@@ -158,11 +158,11 @@ user = User.where(encrypted_bank_account_number: SymmetricEncryption.encrypt('12
 
 # Fields can be accessed using their unencrypted names
 puts user.bank_account_number
-```
+~~~
 
 #### Validation Example
 
-```ruby
+~~~ruby
 class MyModel < ActiveRecord::Base
   validates :encrypted_ssn, symmetric_encryption: true
 end
@@ -173,6 +173,6 @@ m.valid?
 m.encrypted_ssn = SymmetricEncryption.encrypt('123456789')
 m.valid?
 #  => true
-```
+~~~
 
 ### Next => [Configuration](configuration.html)

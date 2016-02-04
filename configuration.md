@@ -12,9 +12,9 @@ For a standalone environment without Rails, see: [Standalone Configuration](stan
 
 Add the following line to your Gemfile _after_ the rails gems:
 
-```ruby
+~~~ruby
 gem 'symmetric-encryption'
-```
+~~~
 
 Install using bundler:
 
@@ -106,7 +106,7 @@ use the same RSA Private key for gaining access to the Symmetric Encryption Keys
 
 Create a configuration file in config/symmetric-encryption.yml per the following example:
 
-```yaml
+~~~yaml
 #
 # Symmetric Encryption for Ruby
 #
@@ -188,6 +188,6 @@ production:
         key_filename: /etc/rails/.rails_old.key
         iv_filename:  /etc/rails/.rails_old.iv
         cipher_name:  aes-256-cbc
-```
+~~~
 
 ### Next => [Heroku Configuration](heroku.html)

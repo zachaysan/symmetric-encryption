@@ -28,9 +28,9 @@ Note: Passwords must be encrypted in the environment in which they will be used.
 Note: To use the rake task 'symmetric_encryption:encrypt' the gem 'highline'
   must first be installed by adding to bundler or installing directly:
 
-```ruby
+~~~ruby
 gem install 'highline'
-```
+~~~
 
 #### Encrypting Files
 

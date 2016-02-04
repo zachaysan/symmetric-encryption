@@ -9,9 +9,9 @@ layout: default
 
 Add the following line to your Gemfile _after_ the rails gems:
 
-```ruby
+~~~ruby
 gem 'symmetric-encryption'
-```
+~~~
 
 Install using bundler:
 
@@ -28,7 +28,7 @@ Generate the configuration file:
 
 The output would be similar to the following, except your keys will be different:
 
-```
+~~~
 Symmetric Encryption config not found.
 To generate one for the first time: rails generate symmetric_encryption:config
 
@@ -45,7 +45,7 @@ Add the production key to Heroku:
   heroku config:add PRODUCTION_KEY1=dnqpGTng7QNOXOkGqqUAmSdQbL8Dp8nf2qa3JoUbeYpNTELKX1o/HeSNADL4Btr7dLrdonUJvwqRp1B9EtVFRaNJBqkrKC4/0FI+km6LrAa36QGwqHXZ6XBMGoqSJ4smgIF1YgxTeZfRGMDwJ+szq7RuNSNdRd+jHQvJ8TEQYte/3oFoYkHxQVCdOIdmdhPebiqk6snRRvbilitGEnAbUTHQGzkpf8cEdCv8qfecIQoJDvDSWUzEMJ+gMm80W26xBxlfd72Raog61R5Vu5l/bv5X7+pHvtRio9xr+/HS2y+YNFNH52oUOu2dMcBcV7AFsIgSY06xtBF9fO53WcIVqA==
 
 ********************************************************************************
-```
+~~~
 
 #### Notes
 
@@ -69,7 +69,7 @@ To create multiple encryption keys in production where each heroku application h
 
 Generate the configuration file which includes the RSA key to unlock the encryption key, as well as the first encryption key:
 
-```
+~~~
 $ rails g symmetric_encryption:heroku_config
 
 Symmetric Encryption config not found.
@@ -89,11 +89,11 @@ Add the production key to Heroku:
 
 ********************************************************************************
 
-```
+~~~
 
 Then generate new additional keys for the other heroku applications:
 
-```
+~~~
 $ rails generate symmetric_encryption:new_keys production
 
 Generated new Symmetric Key for encryption. Set the KEY environment variable in production to:
@@ -103,14 +103,14 @@ IaNuzvy9DAEskFQhmbHSCIemgAIvsyKjJ46CKOO9c8UifIlA/fSe89HhlwHJ
 e2rJj4K8hOCKonxvnIY2DbJLa78+THVN25AQMjRq3ISZjlULxYn9chpGTuTB
 KKQ8w9mdnqwpkr6wQVL5zCQLv6yIdVZrp/EHWoBk5tfChWUmB97mY5I3vogk
 JbwCtvOPpumiaeORimo+cDHoRGFDK1ACVeWg1hRkvQ==
-```
+~~~
 
 The above output needs to be reformatted to remove the newlines and to include the appropriate heroku command.
 For example the above output would be added as follows:
 
-```
+~~~
   heroku config:add PRODUCTION_KEY1=IVFlzQP604dlD98Tj94gJzAqqmD2ZFGlScbqiUCJgMYZrfhDymxm+LO2TtIP+tSq4fnXfuNbMlCkTCmyNUkXlJU9VC2oGIvt4aW/wZgaNac8jsjfZQa59w3dIaNuzvy9DAEskFQhmbHSCIemgAIvsyKjJ46CKOO9c8UifIlA/fSe89HhlwHJe2rJj4K8hOCKonxvnIY2DbJLa78+THVN25AQMjRq3ISZjlULxYn9chpGTuTBKKQ8w9mdnqwpkr6wQVL5zCQLv6yIdVZrp/EHWoBk5tfChWUmB97mY5I3vogkJbwCtvOPpumiaeORimo+cDHoRGFDK1ACVeWg1hRkvQ==
-```
+~~~
 
 The above step can be run as many times as need to generate new encrypted symmetric keys. Old ones can be discarded if not used.
 

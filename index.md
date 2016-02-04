@@ -18,15 +18,15 @@ expose all the encryption algorithms supported by OpenSSL.
 
 #### Encryption Example
 
-```ruby
+~~~ruby
 SymmetricEncryption.encrypt "Sensitive data"
-```
+~~~
 
 #### Decryption Example
 
-```ruby
+~~~ruby
 SymmetricEncryption.decrypt "JqLJOi6dNjWI9kX9lSL1XQ=="
-```
+~~~
 
 ## Features
 
@@ -81,7 +81,7 @@ Passwords can be encrypted in any YAML configuration file.
 
 For example config/database.yml
 
-```yaml
+~~~yaml
 ---
 production:
   adapter:  mysql
@@ -89,7 +89,7 @@ production:
   database: myapp_production
   username: admin
   password: <%= SymmetricEncryption.try_decrypt "JqLJOi6dNjWI9kX9lSL1XQ==\n" %>
-```
+~~~
 
 ### Notes
 
@@ -99,44 +99,44 @@ production:
 * In order for the above technique to work in non-rails YAML configuration files
   the YAML file must be processed using `ERB` prior to passing to YAML. For example
 
-```ruby
+~~~ruby
     config_file = Rails.root.join('config', 'redis.yml')
     raise "redis config not found. Create a config file at: config/redis.yml" unless config_file.file?
 
     cfg = YAML.load(ERB.new(File.new(config_file).read).result)[Rails.env]
     raise("Environment #{Rails.env} not defined in redis.yml") unless cfg
-```
+~~~
 
 ## Large File Encryption
 
 Example: Read and decrypt a line at a time from a file
 
-```ruby
+~~~ruby
 SymmetricEncryption::Reader.open('encrypted_file') do |file|
   file.each_line do |line|
      puts line
   end
 end
-```
+~~~
 
 Example: Encrypt and write data to a file
 
-```ruby
+~~~ruby
 SymmetricEncryption::Writer.open('encrypted_file') do |file|
   file.write "Hello World\n"
   file.write "Keep this secret"
 end
-```
+~~~
 
 Example: Compress, Encrypt and write data to a file
 
-```ruby
+~~~ruby
 SymmetricEncryption::Writer.open('encrypted_compressed.zip', compress: true) do |file|
   file.write "Hello World\n"
   file.write "Compress this\n"
   file.write "Keep this safe and secure\n"
 end
-```
+~~~
 
 ### Ruby Platform Support
 
@@ -148,9 +148,9 @@ end
 
 Add the following line to Gemfile
 
-```ruby
+~~~ruby
 gem 'symmetric-encryption'
-```
+~~~
 
 Install the Gem with bundler
 

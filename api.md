@@ -9,7 +9,7 @@ layout: default
 Before configuration or generating keys SymmetricEncryption can be used in a
 standalone test scenario:
 
-```ruby
+~~~ruby
 # Use test encryption keys
 SymmetricEncryption.cipher = SymmetricEncryption::Cipher.new(
   key:         '1234567890ABCDEF1234567890ABCDEF',
@@ -20,15 +20,15 @@ SymmetricEncryption.cipher = SymmetricEncryption::Cipher.new(
 encrypted = SymmetricEncryption.encrypt('hello world')
 
 puts SymmetricEncryption.decrypt(encrypted)
-```
+~~~
 
 ### SymmetricEncryption.encrypt
 
 Encrypt the supplied string using Symmetric Encryption
 
-```ruby
+~~~ruby
 SymmetricEncryption.encrypt(str, random_iv=false, compress=false, type=:string)
-```
+~~~
 
 - Returns a Base64 encoded string
 - Returns nil if the supplied `str` is nil
@@ -90,9 +90,9 @@ Default: :string
 
 Decrypt string previously encrypted with Symmetric Encryption
 
-```ruby
+~~~ruby
 SymmetricEncryption.decrypt(encrypted_and_encoded_string, version=nil, type=:string)
-```
+~~~
 
 - Returns decrypted value
    - On decryption an attempt is made to encode the data as UTF-8, if it fails it
