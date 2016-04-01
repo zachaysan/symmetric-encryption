@@ -9,7 +9,7 @@ whilst in flight and at rest. Amongst many other requirements all passwords
 in configuration files have to be encrypted.
 
 This Gem helps achieve compliance by supporting encryption of data in a simple
-and consistent way for Ruby and Ruby on Rails projects.
+and consistent way for Ruby and Rails projects.
 
 Symmetric Encryption uses OpenSSL to encrypt and decrypt data, and can therefore
 expose all the encryption algorithms supported by OpenSSL.
@@ -71,9 +71,12 @@ SymmetricEncryption.decrypt "JqLJOi6dNjWI9kX9lSL1XQ=="
 * Uses built-in support in Ruby for OpenSSL and Zlib for high performance and
   maximum portability without introducing any additional dependencies
 
-### Compatibility
+### Backgound Job Processing
 
-* Drop in replacement for `attr_encrypted`. Just remove the `attr_encrypted` gem
+* The sister-project [Rocket Job](http://rocketjob.io) uses Symmetric Encryption
+  to encrypt job data to keep it secure.
+    * Rocket Job Pro can also read and write encrypted files created by Symmetric Encryption.
+    * Rocket Job Pro re-uses the existing Symmetric Encryption setup for encryption and decryption.
 
 ## Encrypting Passwords in configuration files
 
@@ -140,8 +143,8 @@ end
 
 ### Ruby Platform Support
 
-* Ruby v1.9.3, v2.0, v2.1, v2.2, or higher
-* JRuby v1.7.3, v9.0.0.0, or higher
+* Ruby v2.1.8, v2.2, v2.3, or higher
+* JRuby v1.7.23, v9.0.5.0, or higher
 * Or, Rubinius v2 or higher
 
 ### Installation
@@ -156,9 +159,11 @@ Install the Gem with bundler
 
     bundle install
 
-### Support
+## Support
 
-To report any issues, or submit any questions: [Github Issues](http://github.com/reidmorrison/symmetric-encryption/issues)
+* Questions?
+    * Join the community chat room on Gitter for [Rocket Job Support](https://gitter.im/rocketjob/support)
+* [Report bugs](https://github.com/rocketjob/symmetric-encryption/issues)
 
 ## Security
 
