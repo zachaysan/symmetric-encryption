@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   # encrypted string
   #
   # Requires users table to have a column called encrypted_age of type string
-  attr_encrypted :age,         type: integer
+  attr_encrypted :age,         type: :integer
 
   # Since string and long_string are not used in the where clause of any SQL
   # queries it is better to ensure that the encrypted value is always different
