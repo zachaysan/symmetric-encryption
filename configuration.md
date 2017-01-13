@@ -115,7 +115,7 @@ Create a configuration file in config/symmetric-encryption.yml per the following
 # can be placed directly in the source code.
 # And therefore no RSA private key is required
 development: &development_defaults
-  key:    1234567890ABCDEF1234567890ABCDEF
+  key:    1234567890ABCDEF
   iv:     1234567890ABCDEF
   cipher_name: aes-128-cbc
 

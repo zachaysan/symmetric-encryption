@@ -22,7 +22,7 @@ require 'symmetric-encryption'
 # Test cipher
 SymmetricEncryption.cipher = SymmetricEncryption::Cipher.new(
   cipher_name: 'aes-128-cbc',
-  key:         '1234567890ABCDEF1234567890ABCDEF',
+  key:         '1234567890ABCDEF',
   iv:          '1234567890ABCDEF',
   encoding:    :base64strict
 )

@@ -12,7 +12,7 @@ standalone test scenario:
 ~~~ruby
 # Use test encryption keys
 SymmetricEncryption.cipher = SymmetricEncryption::Cipher.new(
-  key:         '1234567890ABCDEF1234567890ABCDEF',
+  key:         '1234567890ABCDEF',
   iv:          '1234567890ABCDEF',
   cipher_name: 'aes-128-cbc'
 )
