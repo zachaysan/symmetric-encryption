@@ -35,7 +35,6 @@ SymmetricEncryption.decrypt "JqLJOi6dNjWI9kX9lSL1XQ=="
 * Encryption of passwords in configuration files
 * Encryption of ActiveRecord model attributes by prefixing attributes / column
   names with encrypted_
-* Encryption of MongoMapper keys by using :encrypted_key
 * Encryption of Mongoid model fields by adding :encrypted option to field
   definitions
 
@@ -227,7 +226,7 @@ is available when reading back the encrypted file/stream. The key is placed
 in a header on the file in encrypted form using the current global key/cipher.
 
 The ActiveRecord `attr_encrypted` method supports the `random_iv: true` option.
-Similarly for MongoMapper and Mongoid the `random_iv: true` option can be added.
+Similarly for Mongoid the `random_iv: true` option can be added.
 
 Note that encrypting the same input string with the same key and :random_iv => true
 option will result in different encrypted output every time it is encrypted.
@@ -237,7 +236,7 @@ option will result in different encrypted output every time it is encrypted.
 * Add the encryption header to all encrypted strings.
   See the _always_add_header_ option in the configuration file.
 
-* Add `random_iv: true` for all ActiveRecord attributes, MongoMapper keys, and
+* Add `random_iv: true` for all ActiveRecord attributes, and
   Mongoid fields which are not used in indexes and will not be used as part of a query.
 
 ### Disclaimer

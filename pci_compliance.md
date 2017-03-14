@@ -47,18 +47,6 @@ class User < ActiveRecord::Base
 ~~~
 
 ~~~ruby
-# MongoMapper example of securing `bank_account_number`
-#
-# A column called `encrypted_bank_account_number` should exist in MongoDB
-# that contains the encrypted bank account number. There should not be a column
-# called `bank_account_number`
-class User
-  include MongoMapper::Document
-  encrypted_key :bank_account_number,    String
-  encrypted_key :long_string,            encrypted: {random_iv: true, compress: true}
-~~~
-
-~~~ruby
 # Mongoid example of securing `bank_account_number`
 #
 # A column called `encrypted_bank_account_number` should exist in MongoDB
