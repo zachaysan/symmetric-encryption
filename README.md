@@ -17,6 +17,26 @@ and consistent way.
 Symmetric Encryption uses OpenSSL to encrypt and decrypt data, and can therefore
 expose all the encryption algorithms supported by OpenSSL.
 
+### Installation
+
+Add this line to your application's Gemfile:
+
+```bash
+gem 'symmetric-encryption'
+```
+
+And then execute:
+
+```bash
+bundle
+```
+
+Or install it yourself using:
+
+```bash
+gem install symmetric-encryption
+```
+
 ## Documentation
 
 [Symmetric Encryption Guide](http://rocketjob.github.io/symmetric-encryption)
